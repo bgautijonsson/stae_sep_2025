@@ -1,0 +1,6 @@
+project:
+  output-dir: docs
+  preview:
+    port: 4200
+  render:
+    - "index.qmd"

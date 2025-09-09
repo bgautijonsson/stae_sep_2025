@@ -1,0 +1,113 @@
+/*-- scss:defaults --*/
+
+$darkblue:                      #08306b;
+$lightblue:                     #74a9cf;
+$white:                         #ffffff;
+
+
+$primary:                       $darkblue;
+$secondary:                     $white;
+
+
+$body-bg:                       $secondary;
+
+$font-size-base:                0.8rem;
+$font-family-base:              "Lato";
+$font-family-sans-serif:        "Lato", "Open Sans", "Montserrat", "Roboto";
+$font-family-monospace:         "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
+
+
+$headings-color:                $darkblue;
+$headings-font-weight:          4000;
+$headings-font-family:          "Lato";
+
+
+$navbar-brand-font-size:        $font-size-base * 1.4;
+$navbar-brand-font-family:      "Lato";
+$navbar-brand-font-weight:      700;
+
+
+$link-color:                    $lightblue;
+$link-color-hover:              $darkblue;
+
+
+/*-- scss:rules --*/
+
+.reveal h1 {
+    color: $primary;
+    font-family: "Fira Sans";
+    font-size: $font-size-base * 3.5;
+}
+
+.reveal h2 {
+    color: $primary;
+    font-family: "Fira Sans";
+    font-size: $font-size-base * 2.5;
+    padding-top: 40px;
+}
+
+.reveal strong {
+    color: $primary;
+}
+
+.reveal p.subtitle {
+    color: #252525;
+    font-size: $font-size-base * 2.5;
+}
+
+.reveal p.author {
+    color: #023047;
+}
+
+.reveal p.institute {
+    color: #023047;
+}
+
+.reveal a {
+    color: $primary;
+    text-align: middle;
+}
+
+.quarto-title > h1.title {
+  opacity: 0 !important;
+}
+
+.slide-logo {
+    width: 100px;
+}
+
+
+.math  {
+  font-size: 90%  !important;
+  font-family: Lato;  
+}
+
+.reveal .slides {
+  font-size: 0.9em;
+}
+
+.reveal pre, .reveal code {
+  font-size: 0.8em;
+}
+
+/*-- Agenda --*/
+
+.agenda {
+  color: $darkblue;
+}
+
+.agenda-slide h1 {
+  size: 0em;
+  display: none;
+}
+
+.agenda-inactive {
+  opacity: 0.25;
+  margin-top: -0.5em;
+  margin-bottom: -0.5em;
+}
+
+.agenda-active {
+  margin-top: -0.5em;
+  margin-bottom: -0.5em;
+}
