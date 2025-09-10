@@ -429,3 +429,183 @@ $$
 :::
 
 :::
+
+## 
+
+
+::: {.r-stack}
+![](images/football/next_week_preds.png){width="70%" fig-align="center" .fragment style="transform: rotate(-1deg)"}
+
+![](images/football/deild_top.png){width="80%" fig-align="center" .fragment style="transform: rotate(7deg)"}
+
+![](images/football/umspil_top.png){width="90%" fig-align="center" .fragment style="transform: rotate(-7deg)"}
+
+![](images/football/styrkur.png){width="95%" fig-align="center" .fragment}
+
+![](images/football/next_week_preds.png){width="80%" fig-align="center" .fragment}
+:::
+
+## {data-name="Veðmál"}
+
+Við veðjum $S$ á veðmál með stuðulinn $o$
+
+::: {.fragment}
+$$
+\text{R} = \begin{cases}
+o \cdot S \quad &\text{ef } f(X_1, X_2) \in A \\
+0  \qquad &\text{ef } f(X_1, X_2) \notin A
+\end{cases}
+$$
+:::
+
+::: {.fragment}
+$$
+G = R - S = \begin{cases}
+(o - 1) \cdot S \quad &\text{ef } f(X_1, X_2) \in A \\
+-S  \qquad &\text{ef } f(X_1, X_2) \notin A
+\end{cases}
+$$
+:::
+
+::: {.fragment}
+Væntur gróði er
+$$
+\mathbb E[G] = p \cdot (o - 1) - (1 - p) = p \cdot o - 1 = (p - \pi) \cdot o
+$$
+:::
+
+## 
+
+::: {.r-stack}
+![](images/football/bets_1x2.png){width="85%" fig-align="center" .fragment style="transform: rotate(-7deg)"}
+
+![](images/football/bets_handicap.png){width="90%" fig-align="center" .fragment style="transform: rotate(7deg)"}
+
+![](images/football/bets_totalgoals.png){width="95%" fig-align="center" .fragment}
+:::
+
+## 
+
+**Kelly Hlutfallið**
+
+
+$$
+f^* = \arg \max_{f} \mathbb E[\log (1 + f \cdot R)]
+$$
+
+![](images/kelly.png){width="60%" fig-align="center"}
+
+##
+
+**Kelly hlutfallið**
+
+$$
+f^* = \frac{p \cdot (o - 1) - (1 - p)}{o - 1} = \frac{po - 1}{o - 1} = \frac{\mathbb E[G]}{o - 1}
+$$
+
+![](images/kelly.png){width="60%" fig-align="center"}
+
+##
+
+$$
+\max_{f_1, \ldots, f_n} \sum_{i=1}^n p_i \log(1 + f_i \cdot R_i)
+$$
+
+::: {.columns style="font-size:80%"}
+
+::: {.column width="50%"}
+
+* $\sum_{i=1}^n f_i \leq 1$
+* $f_i \geq 0$
+
+:::
+
+::: {.column width="50%"}
+
+![](images/kelly_algorithm.png){width="100%" fig-align="center"}
+
+:::
+:::
+
+##
+
+**Kelly brotahlutfall**
+
+$$
+f_{\text{raun}} = \alpha \cdot f^*_{\text{Kelly}}
+$$
+
+
+```{r}
+#| eval: false
+#| echo: true
+kelly_frac <- 0.015 # 1.5% of optimal Kelly
+kelly <- get_kelly(p, o)
+kelly <- kelly * kelly_frac
+bet_amount <- round(kelly * cur_pool, bet_digits)
+```
+
+![](images/football/bets_example.png){width="100%" fig-align="center"}
+
+## {data-name="Niðurstöður"}
+
+::: {.r-stack}
+![](images/football/bets_overview.png){width="90%" fig-align="center" .fragment style="transform: rotate(-7deg)"}
+
+![](images/football/football_bets.png){width="100%" fig-align="center" .fragment}
+:::
+
+##
+
+::: {.r-stack}
+![](images/handball/bets_overview.png){width="90%" fig-align="center" style="transform: rotate(-7deg)"}
+
+![](images/handball/handball_bets.png){width="100%" fig-align="center" .fragment}
+:::
+
+##
+
+::: {.columns}
+::: {.column width="50%"}
+![](images/ruv_vidtal.png){width="100%" fig-align="center"}
+:::
+::: {.column width="50%"}
+![](images/kosningavakt.png){width="100%" fig-align="center"}
+:::
+:::
+
+## 
+
+![](images/basketball/accuracy_home_away.png){width="100%" fig-align="center"}
+
+##
+
+::: {.columns}
+::: {.column width="33%"}
+![](images/basketball/group_table1.png){width="100%" fig-align="center"}
+:::
+::: {.column width="33%"}
+![](images/basketball/group_table2.png){width="100%" fig-align="center"}
+:::
+::: {.column width="33%"}
+![](images/basketball/group_table3.png){width="100%" fig-align="center"}
+:::
+:::
+
+
+## {data-name="Umræður"}
+::: {.columns style="font-size:80%"}
+
+::: {.fragment}
+**Við getum notað tölfræði til að finna hagstæð veðmál í íþróttum**
+:::
+
+::: {.fragment}
+**Það er mikil óvissa og best að fara með þessi fræði eins og venjulegar fjárfestingar**
+:::
+
+::: {.fragment}
+**Þróa líkan eitt skref í einu, veðja fyrst mjög litlu**
+:::
+
+:::
