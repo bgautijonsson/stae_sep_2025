@@ -486,7 +486,7 @@ $$
 
 ## 
 
-**Kelly Hlutfallið**
+**Kelly hlutfallið**
 
 
 $$
@@ -548,6 +548,14 @@ bet_amount <- round(kelly * cur_pool, bet_digits)
 ![](images/football/bets_example.png){width="100%" fig-align="center"}
 
 ## {data-name="Niðurstöður"}
+
+![](images/football/calibration_male.png){width="100%" fig-align="center"}
+
+##
+
+![](images/football/calibration_female.png){width="100%" fig-align="center"}
+
+##
 
 ::: {.r-stack}
 ![](images/football/bets_overview.png){width="90%" fig-align="center" .fragment style="transform: rotate(-7deg)"}
