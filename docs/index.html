@@ -143,8 +143,282 @@ Brynjólfur Gauti Guðrúnar Jónsson
 </div>
 
 </section>
-<section class="slide level2">
+<section id="section" class="slide level2" data-name="Inngangur">
+<h2></h2>
+<p><strong>Eftirádreifing</strong> <span class="math display">\[
+p(\theta | X) \propto p(X | \theta) \cdot p(\theta)
+\]</span></p>
+<div class="fragment">
+<p><strong>Spádreifing:</strong> <span class="math display">\[
+p(X_{\text{new}} | X) = \int p(X_{\text{new}} | \theta) \cdot p(\theta | X) \, d\theta
+\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Líkur á að vinna veðmál:</strong> <span class="math display">\[
+P(\text{vinna veðmál}) = P(X_{\text{new}} \in A | X)
+\]</span></p>
+</div>
+</section>
+<section id="bradley-terry-og-sushi" class="slide level2">
+<h2>Bradley-Terry og sushi</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/bradley_terry_sushi.jpeg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+P(i &gt; j) &amp;= \frac{e^{\lambda_i}}{e^{\lambda_i} + e^{\lambda_j}}
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\text{logit}\, P(i &gt; j) &amp;= \lambda_i - \lambda_j
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+P_{\text{ELO}}(i &gt; j) &amp;= \frac{e^{\lambda_i/400}}{e^{\lambda_i/400} + e^{\lambda_j/400}}
+\end{aligned}
+\]</span></p>
+</div>
+</div></div>
+</section>
+<section id="section-1" class="slide level2" data-name="Líkön">
+<h2></h2>
 
+<img data-src="images/football/data.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="fragment">
+<div class="columns" data-align="center">
+<div class="column" style="width:50%;">
+<ul>
+<li>Liðsstyrkur er breytilegur</li>
+<li>Fylgni í markafjölda</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Fleiri jafntefli</li>
+<li>Heimavallaráhrif</li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Við höfum <span class="math inline">\(K\)</span> lið, <span class="math inline">\(k \in \{1, \ldots, K\}\)</span> og metum styrk þeirra á tímum <span class="math inline">\(T\)</span>, <span class="math inline">\(t \in \{1, \ldots, T\}\)</span>.</p><p><span class="math display">\[
+\begin{gathered}
+\text{off}_{k,t} = \text{off}_{k,t-1} + \sigma_{\text{off},k} \sqrt{\Delta ^t_k} \, \epsilon_{k,t}^{\text{off}} \qquad
+\text{def}_{k,t} = \text{def}_{k,t-1} + \sigma_{\text{def},k} \sqrt{\Delta ^t_k} \, \epsilon_{k,t}^{\text{def}}
+\end{gathered}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/football/evolution_male.png"></p>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Segjum að lið <span class="math inline">\(i\)</span> spili á heimavelli gegn liði <span class="math inline">\(j\)</span>.</p><p><span class="math display">\[
+\begin{gathered}
+\text{off}_{i} = \text{off}_{i,t} + h^\text{off}_{i} \qquad
+\text{def}_{i} = \text{def}_{i,t} + h^\text{def}_{i} \\
+\text{off}_{j} = \text{off}_{j,t} \qquad
+\text{def}_{j} = \text{def}_{j,t}
+\end{gathered}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><img data-src="images/football/home_advantage.png"></p>
+</div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Látum <span class="math inline">\(\mu_i\)</span> og <span class="math inline">\(\mu_j\)</span> vera væntan fjölda marka liðanna</p><p><span class="math display">\[
+\begin{gathered}
+\log \mu_i = \mu_0 + \text{off}_{i} - \text{def}_{j} \qquad
+\log \mu_j = \mu_0 + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+\]</span></p><div class="fragment">
+<p>Þá gætum við prófað</p>
+<p><span class="math display">\[
+X_i \sim \text{Poisson}(\mu_i) \qquad
+X_j \sim \text{Poisson}(\mu_j)
+\]</span></p>
+</div><div class="fragment">
+<p>Ekki endilega nóg af jafnteflum og vantar fylgni milli frammistöðu liðanna</p>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p><strong>Tvívíða Poisson dreifingin</strong></p><p><span class="math display">\[
+\begin{gathered}
+Z_1 \sim \text{Poisson}(\mu_1) \qquad
+Z_2 \sim \text{Poisson}(\mu_2) \qquad
+Z_3 \sim \text{Poisson}(\mu_3)
+\end{gathered}
+\]</span></p><p>Látum <span class="math inline">\(X_1\)</span> og <span class="math inline">\(X_2\)</span> vera fall af þremur Poisson dreifðum stærðum</p><p><span class="math display">\[
+\begin{gathered}
+X_1 = Z_1 + Z_3 \qquad
+X_2 = Z_2 + Z_3
+\end{gathered}
+\]</span></p><p>Þá vitum við að</p><p><span class="math display">\[
+\begin{gathered}
+E[X_1] = E[Z_1] + E[Z_3] = \mu_1 + \mu_3 \qquad
+E[X_2] = E[Z_2] + E[Z_3] = \mu_2 + \mu_3
+\end{gathered}
+\]</span></p><p><span class="math display">\[
+\text{Corr}(X_1, X_2) = \frac{\mu_3}{\sqrt{\mu_1 \mu_2}} = \rho
+\]</span></p><p>Hvernig viljum við stika þetta?</p>
+</div>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Látum <span class="math inline">\(\rho\)</span> vera fall af mismun á styrk liðanna</p><p><span class="math display">\[
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+\]</span></p><p>þar sem</p><p><span class="math display">\[
+\text{diff} = |\text{off}_{i} + \text{def}_{i} - \text{off}_{j} - \text{def}_{j}|
+\]</span></p>
+</div>
+</section>
+<section id="section-7" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Látum <span class="math inline">\(\rho\)</span> vera fall af mismun á styrk liðanna</p><p><span class="math display">\[
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+\]</span></p><p>þar sem</p><p><span class="math display">\[
+\text{diff} = |\text{off}_{i} + \text{def}_{i} - \text{off}_{j} - \text{def}_{j}|
+\]</span></p>
+</div>
+
+<img data-src="images/football/fylgni.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-8" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Látum <span class="math inline">\(\rho\)</span> vera fall af mismun á styrk liðanna</p><p><span class="math display">\[
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+\]</span></p><p>þar sem</p><p><span class="math display">\[
+\text{diff} = |\text{off}_{i} + \text{def}_{i} - \text{off}_{j} - \text{def}_{j}|
+\]</span></p>
+</div>
+
+<img data-src="images/football/fylgni_ita.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-9" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Til að rifja upp</p><p><span class="math display">\[
+\begin{gathered}
+\log \mu_i = \mu_0 + \text{off}_{i} - \text{def}_{j} \qquad
+\log \mu_j = \mu_0 + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+\]</span></p><p>Við metum <span class="math inline">\(\mu_3\)</span> sem</p><p><span class="math display">\[
+\log\mu_3 = \log \rho + 0.5 \cdot (\log\mu_i + \log\mu_j)
+\]</span></p><p><span class="math display">\[
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+\]</span></p><p>og stigafjöldi liðanna verður þá</p><p><span class="math display">\[
+\begin{gathered}
+X_1 = Z_1 + Z_3 \qquad
+X_2 = Z_2 + Z_3
+\end{gathered}
+\]</span></p><p><span class="math display">\[
+\begin{gathered}
+Z_1 \sim \text{Poisson}(\mu_1) \qquad
+Z_2 \sim \text{Poisson}(\mu_2) \qquad
+Z_3 \sim \text{Poisson}(\mu_3)
+\end{gathered}
+\]</span></p>
+</div>
+</section>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:60%">
+<p><strong>Eru fleiri jafntefli en við ættum von á?</strong></p><p><span class="math display">\[
+P(X_1 = x_1, X_2 = x_2) = \begin{cases}
+p \cdot \text{Poisson}(x_1; \mu_{\text{jt}}) \cdot \mathbf{1}_{x_1 = x_2} + (1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) &amp; \text{if } x_1 = x_2 \\
+(1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) &amp; \text{if } x_1 \neq x_2
+\end{cases}
+\]</span></p><p><span class="math display">\[
+\text{logit}(p) = \alpha_p + \beta_p \cdot \text{diff}
+\]</span></p>
+</div>
+</section>
+<section id="section-11" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:60%">
+<p><strong>Eru fleiri jafntefli en við ættum von á?</strong></p><p><span class="math display">\[
+P(X_1 = x_1, X_2 = x_2) = \begin{cases}
+p \cdot \text{Poisson}(x_1; \mu_{\text{jt}}) \cdot \mathbf{1}_{x_1 = x_2} + (1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) &amp; \text{if } x_1 = x_2 \\
+(1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) &amp; \text{if } x_1 \neq x_2
+\end{cases}
+\]</span></p><p><span class="math display">\[
+\text{logit}(p) = \alpha_p + \beta_p \cdot \text{diff}
+\]</span></p>
+</div>
+
+<img data-src="images/football/inflation.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-12" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:60%">
+<p><strong>Eru fleiri jafntefli en við ættum von á?</strong></p><p><span class="math display">\[
+P(X_1 = x_1, X_2 = x_2) = \begin{cases}
+p \cdot \text{Poisson}(x_1; \mu_{\text{jt}}) \cdot \mathbf{1}_{x_1 = x_2} + (1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) &amp; \text{if } x_1 = x_2 \\
+(1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) &amp; \text{if } x_1 \neq x_2
+\end{cases}
+\]</span></p><p><span class="math display">\[
+\text{logit}(p) = \alpha_p + \beta_p \cdot \text{diff}
+\]</span></p>
+</div>
+
+<img data-src="images/football/inflation_ita.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p>Til að rifja upp</p><p><span class="math display">\[
+\begin{gathered}
+\log \mu_i = \mu_0 + \text{off}_{i} - \text{def}_{j} \qquad
+\log \mu_j = \mu_0 + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+\]</span></p><p>Við metum <span class="math inline">\(\mu_3\)</span> sem</p><p><span class="math display">\[
+\log\mu_3 = \log \rho + 0.5 \cdot (\log\mu_i + \log\mu_j)
+\]</span></p><p><span class="math display">\[
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+\]</span></p><div class="column" style="font-size:80%">
+<p>með líkum <span class="math inline">\(p = \text{invlogit}(\alpha_p + \beta_p \cdot \text{diff})\)</span></p>
+<p><span class="math display">\[
+X_1 \sim \text{Poisson}(\mu_{\text{jt}}) \qquad
+X_2 \sim \text{Poisson}(\mu_{\text{jt}})
+\]</span></p>
+<p><span class="math display">\[
+\mu_{\text{jt}} = \frac{\mu_1 + \mu_2}{2}
+\]</span></p>
+</div><div class="column" style="font-size:80%">
+<p>með líkum <span class="math inline">\(1 - p\)</span></p>
+<p><span class="math display">\[
+\begin{gathered}
+X_1 = Z_1 + Z_3 \qquad
+X_2 = Z_2 + Z_3
+\end{gathered}
+\]</span></p>
+<p><span class="math display">\[
+\begin{gathered}
+Z_1 \sim \text{Poisson}(\mu_1) \qquad
+Z_2 \sim \text{Poisson}(\mu_2) \\
+Z_3 \sim \text{Poisson}(\mu_3)
+\end{gathered}
+\]</span></p>
+</div></div>
 
 </section>
     </div>

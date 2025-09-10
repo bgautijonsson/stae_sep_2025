@@ -21,3 +21,411 @@ revealjs-plugins:
   - simplemenu
 ---
 
+## {data-name="Inngangur"}
+
+
+**Eftirádreifing**
+$$
+p(\theta | X) \propto p(X | \theta) \cdot p(\theta)
+$$  
+
+
+::: {.fragment}
+**Spádreifing:**
+$$
+p(X_{\text{new}} | X) = \int p(X_{\text{new}} | \theta) \cdot p(\theta | X) \, d\theta
+$$
+:::
+
+::: {.fragment}
+**Líkur á að vinna veðmál:**
+$$
+P(\text{vinna veðmál}) = P(X_{\text{new}} \in A | X)
+$$
+:::
+
+## Bradley-Terry og sushi
+
+::: {.columns}
+::: {.column width="50%"}
+![](images/bradley_terry_sushi.jpeg){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+$$
+\begin{aligned}
+P(i > j) &= \frac{e^{\lambda_i}}{e^{\lambda_i} + e^{\lambda_j}}
+\end{aligned}
+$$
+:::
+
+::: {.fragment}
+$$
+\begin{aligned}
+\text{logit}\, P(i > j) &= \lambda_i - \lambda_j
+\end{aligned}
+$$
+:::
+
+::: {.fragment}
+$$
+\begin{aligned}
+P_{\text{ELO}}(i > j) &= \frac{e^{\lambda_i/400}}{e^{\lambda_i/400} + e^{\lambda_j/400}}
+\end{aligned}
+$$
+:::
+
+:::
+:::
+
+## {data-name="Líkön"}
+
+
+![](images/football/data.png){width=100% fig-align="center"}
+
+::: {.fragment}
+::: {.columns align="center"}
+::: {.column width="50%"}
+* Liðsstyrkur er breytilegur
+* Fylgni í markafjölda
+:::
+::: {.column width="50%"}
+* Fleiri jafntefli
+* Heimavallaráhrif
+:::
+:::
+:::
+
+## 
+
+
+::: {.columns style="font-size:80%"}
+
+Við höfum $K$ lið, $k \in \{1, \ldots, K\}$ og metum styrk þeirra á tímum $T$, $t \in \{1, \ldots, T\}$.
+
+$$
+\begin{gathered}
+\text{off}_{k,t} = \text{off}_{k,t-1} + \sigma_{\text{off},k} \sqrt{\Delta ^t_k} \, \epsilon_{k,t}^{\text{off}} \qquad
+\text{def}_{k,t} = \text{def}_{k,t-1} + \sigma_{\text{def},k} \sqrt{\Delta ^t_k} \, \epsilon_{k,t}^{\text{def}}
+\end{gathered}
+$$
+
+:::
+
+::: {.fragment}
+![](images/football/evolution_male.png)
+:::
+
+
+##
+
+::: {.columns style="font-size:80%"}
+
+Segjum að lið $i$ spili á heimavelli gegn liði $j$.
+
+$$
+\begin{gathered}
+\text{off}_{i} = \text{off}_{i,t} + h^\text{off}_{i} \qquad
+\text{def}_{i} = \text{def}_{i,t} + h^\text{def}_{i} \\
+\text{off}_{j} = \text{off}_{j,t} \qquad
+\text{def}_{j} = \text{def}_{j,t}
+\end{gathered}
+$$
+
+:::
+
+::: {.fragment}
+![](images/football/home_advantage.png)
+:::
+
+##
+
+::: {.columns style="font-size:80%"}
+
+Látum $\mu_i$ og $\mu_j$ vera væntan fjölda marka liðanna
+
+$$
+\begin{gathered}
+\log \mu_i = \mu_0 + \text{off}_{i} - \text{def}_{j} \qquad
+\log \mu_j = \mu_0 + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+$$
+
+::: {.fragment}
+Þá gætum við prófað
+
+$$
+X_i \sim \text{Poisson}(\mu_i) \qquad
+X_j \sim \text{Poisson}(\mu_j)
+$$
+:::
+
+::: {.fragment}
+Ekki endilega nóg af jafnteflum og vantar fylgni milli frammistöðu liðanna
+:::
+
+:::
+
+##
+
+::: {.columns style="font-size:80%"}
+**Tvívíða Poisson dreifingin**
+
+$$
+\begin{gathered}
+Z_1 \sim \text{Poisson}(\mu_1) \qquad
+Z_2 \sim \text{Poisson}(\mu_2) \qquad
+Z_3 \sim \text{Poisson}(\mu_3) 
+\end{gathered}
+$$
+
+Látum $X_1$ og $X_2$ vera fall af þremur Poisson dreifðum stærðum
+
+$$
+\begin{gathered}
+X_1 = Z_1 + Z_3 \qquad
+X_2 = Z_2 + Z_3
+\end{gathered}
+$$
+
+Þá vitum við að 
+
+$$
+\begin{gathered}
+E[X_1] = E[Z_1] + E[Z_3] = \mu_1 + \mu_3 \qquad
+E[X_2] = E[Z_2] + E[Z_3] = \mu_2 + \mu_3 
+\end{gathered}
+$$
+
+
+$$
+\text{Corr}(X_1, X_2) = \frac{\mu_3}{\sqrt{\mu_1 \mu_2}} = \rho
+$$
+
+Hvernig viljum við stika þetta?
+:::
+
+##
+
+::: {.columns style="font-size:80%"}
+Látum $\rho$ vera fall af mismun á styrk liðanna
+
+$$
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+$$
+
+þar sem
+
+$$
+\text{diff} = |\text{off}_{i} + \text{def}_{i} - \text{off}_{j} - \text{def}_{j}|
+$$
+
+:::
+
+##
+
+::: {.columns style="font-size:80%"}
+Látum $\rho$ vera fall af mismun á styrk liðanna
+
+$$
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+$$
+
+þar sem
+
+$$
+\text{diff} = |\text{off}_{i} + \text{def}_{i} - \text{off}_{j} - \text{def}_{j}|
+$$
+
+:::
+
+
+![](images/football/fylgni.png){width="100%" fig-align="center"}
+
+
+
+##
+
+::: {.columns style="font-size:80%"}
+Látum $\rho$ vera fall af mismun á styrk liðanna
+
+$$
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+$$
+
+þar sem
+
+$$
+\text{diff} = |\text{off}_{i} + \text{def}_{i} - \text{off}_{j} - \text{def}_{j}|
+$$
+
+:::
+
+![](images/football/fylgni_ita.png){width="100%" fig-align="center"}
+
+## 
+
+::: {.columns style="font-size:80%"}
+
+Til að rifja upp
+
+$$
+\begin{gathered}
+\log \mu_i = \mu_0 + \text{off}_{i} - \text{def}_{j} \qquad
+\log \mu_j = \mu_0 + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+$$
+
+Við metum $\mu_3$ sem
+
+$$
+\log\mu_3 = \log \rho + 0.5 \cdot (\log\mu_i + \log\mu_j)
+$$
+
+$$
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+$$
+
+og stigafjöldi liðanna verður þá
+
+$$
+\begin{gathered}
+X_1 = Z_1 + Z_3 \qquad
+X_2 = Z_2 + Z_3
+\end{gathered}
+$$
+
+$$
+\begin{gathered}
+Z_1 \sim \text{Poisson}(\mu_1) \qquad
+Z_2 \sim \text{Poisson}(\mu_2) \qquad
+Z_3 \sim \text{Poisson}(\mu_3) 
+\end{gathered}
+$$
+
+
+:::
+
+## 
+
+::: {.columns style="font-size:60%"}
+
+**Eru fleiri jafntefli en við ættum von á?**
+
+$$
+P(X_1 = x_1, X_2 = x_2) = \begin{cases}
+p \cdot \text{Poisson}(x_1; \mu_{\text{jt}}) \cdot \mathbf{1}_{x_1 = x_2} + (1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) & \text{if } x_1 = x_2 \\
+(1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) & \text{if } x_1 \neq x_2
+\end{cases}
+$$
+
+$$
+\text{logit}(p) = \alpha_p + \beta_p \cdot \text{diff}
+$$
+
+:::
+
+## 
+
+::: {.columns style="font-size:60%"}
+
+**Eru fleiri jafntefli en við ættum von á?**
+
+$$
+P(X_1 = x_1, X_2 = x_2) = \begin{cases}
+p \cdot \text{Poisson}(x_1; \mu_{\text{jt}}) \cdot \mathbf{1}_{x_1 = x_2} + (1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) & \text{if } x_1 = x_2 \\
+(1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) & \text{if } x_1 \neq x_2
+\end{cases}
+$$
+
+$$
+\text{logit}(p) = \alpha_p + \beta_p \cdot \text{diff}
+$$
+
+:::
+
+![](images/football/inflation.png){width="100%" fig-align="center"}
+
+## 
+
+::: {.columns style="font-size:60%"}
+
+**Eru fleiri jafntefli en við ættum von á?**
+
+$$
+P(X_1 = x_1, X_2 = x_2) = \begin{cases}
+p \cdot \text{Poisson}(x_1; \mu_{\text{jt}}) \cdot \mathbf{1}_{x_1 = x_2} + (1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) & \text{if } x_1 = x_2 \\
+(1-p) \cdot \text{BivPoisson}(x_1, x_2; \mu_1, \mu_2, \mu_3) & \text{if } x_1 \neq x_2
+\end{cases}
+$$
+
+$$
+\text{logit}(p) = \alpha_p + \beta_p \cdot \text{diff}
+$$
+
+:::
+
+![](images/football/inflation_ita.png){width="100%" fig-align="center"}
+
+
+## 
+
+::: {.columns style="font-size:80%"}
+
+Til að rifja upp
+
+$$
+\begin{gathered}
+\log \mu_i = \mu_0 + \text{off}_{i} - \text{def}_{j} \qquad
+\log \mu_j = \mu_0 + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+$$
+
+Við metum $\mu_3$ sem
+
+$$
+\log\mu_3 = \log \rho + 0.5 \cdot (\log\mu_i + \log\mu_j)
+$$
+
+$$
+\text{logit}(\rho) = \alpha_{\rho} + \beta_{\rho}  \cdot \text{diff}
+$$
+
+::: {.column width="50%" style="font-size:80%"}
+
+með líkum $p = \text{invlogit}(\alpha_p + \beta_p \cdot \text{diff})$
+
+$$
+X_1 \sim \text{Poisson}(\mu_{\text{jt}}) \qquad
+X_2 \sim \text{Poisson}(\mu_{\text{jt}})
+$$
+
+$$
+\mu_{\text{jt}} = \frac{\mu_1 + \mu_2}{2}
+$$
+
+:::
+
+::: {.column width="50%" style="font-size:80%"}
+
+með líkum $1 - p$
+
+$$
+\begin{gathered}
+X_1 = Z_1 + Z_3 \qquad
+X_2 = Z_2 + Z_3
+\end{gathered}
+$$
+
+$$
+\begin{gathered}
+Z_1 \sim \text{Poisson}(\mu_1) \qquad
+Z_2 \sim \text{Poisson}(\mu_2) \\
+Z_3 \sim \text{Poisson}(\mu_3) 
+\end{gathered}
+$$
+
+:::
+
+:::
