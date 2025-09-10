@@ -677,6 +677,17 @@ $$
 :::
 :::
 
+##
+
+::: {.columns}
+::: {.column width="50%"}
+![](images/basketball/group_table1_update.png){width="60%" fig-align="center"}
+:::
+::: {.column width="50%"}
+![](images/basketball/group_table_true.png){width="89%" fig-align="center"}
+:::
+:::
+
 ## 
 
 ![](images/handball/three_teams.png){width="100%" fig-align="center"}
