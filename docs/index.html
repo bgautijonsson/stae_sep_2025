@@ -642,6 +642,69 @@ f_{\text{raun}} = \alpha \cdot f^*_{\text{Kelly}}
 </section>
 <section id="section-23" class="slide level2">
 <h2></h2>
+<div class="columns" style="font-size:80%">
+<p><span class="math display">\[
+\begin{gathered}
+\mu_i = \mu_0^t + \text{off}_{i} - \text{def}_{j} \qquad
+\mu_j = \mu_0^t + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+\]</span></p><p>Í stað Poisson dreifingar kemur t-dreifingin</p><p><span class="math display">\[
+\begin{pmatrix}
+X_i \\
+X_j
+\end{pmatrix} \sim \text{student-t}\left(\begin{pmatrix}
+\mu_i \\
+\mu_j
+\end{pmatrix}, \Sigma_{ij}, \nu\right)
+\]</span></p><p>Samdreifnifylkið fer eftir keppandi liðum</p><p><span class="math display">\[
+\Sigma_{ij} = \begin{pmatrix}
+\sigma_i^2 &amp; \rho \sigma_i \sigma_j \\
+\rho \sigma_i \sigma_j &amp; \sigma_j^2
+\end{pmatrix}
+\]</span></p>
+</div>
+
+<img data-src="images/handball/rho_nu.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-24" class="slide level2">
+<h2></h2>
+<div class="columns" style="font-size:80%">
+<p><span class="math display">\[
+\begin{gathered}
+\mu_i = \mu_0^t + \text{off}_{i} - \text{def}_{j} \qquad
+\mu_j = \mu_0^t + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+\]</span></p><p>Í stað Poisson dreifingar kemur t-dreifingin</p><p><span class="math display">\[
+\begin{pmatrix}
+X_i \\
+X_j
+\end{pmatrix} \sim \text{student-t}\left(\begin{pmatrix}
+\mu_i \\
+\mu_j
+\end{pmatrix}, \Sigma_{ij}, \nu\right)
+\]</span></p><p>Samdreifnifylkið fer eftir keppandi liðum</p><p><span class="math display">\[
+\Sigma_{ij} = \begin{pmatrix}
+\sigma_i^2 &amp; \rho \sigma_i \sigma_j \\
+\rho \sigma_i \sigma_j &amp; \sigma_j^2
+\end{pmatrix}
+\]</span></p>
+</div>
+
+<img data-src="images/basketball/rho_nu.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-25" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/arbitrage1.png" class="quarto-figure quarto-figure-center" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/arbitrage2.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</section>
+<section id="section-26" class="slide level2">
+<h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -657,42 +720,50 @@ f_{\text{raun}} = \alpha \cdot f^*_{\text{Kelly}}
 </div>
 </div></div>
 </section>
-<section id="section-24" class="slide level2">
+<section id="section-27" class="slide level2">
 <h2></h2>
 
 <img data-src="images/basketball/accuracy_home_away.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="section-25" class="slide level2">
+<section id="section-28" class="slide level2">
 <h2></h2>
 <div class="columns">
-<div class="column" style="width:33%;">
+<div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/basketball/group_table1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="images/basketball/group_table1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
-</div><div class="column" style="width:33%;">
+</div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/basketball/group_table2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div><div class="column" style="width:33%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/basketball/group_table3.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="images/basketball/group_table_true.png" class="quarto-figure quarto-figure-center" style="width:89.0%"></p>
 </figure>
 </div>
 </div></div>
 </section>
-<section id="section-26" class="slide level2" data-name="Umræður">
+<section id="section-29" class="slide level2">
+<h2></h2>
+
+<img data-src="images/handball/three_teams.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="section-30" class="slide level2" data-name="Umræður">
 <h2></h2>
 <div class="columns" style="font-size:80%">
 <div class="fragment">
-<p><strong>Við getum notað tölfræði til að finna hagstæð veðmál í íþróttum</strong></p>
-</div><div class="fragment">
-<p><strong>Það er mikil óvissa og best að fara með þessi fræði eins og venjulegar fjárfestingar</strong></p>
-</div><div class="fragment">
-<p><strong>Þróa líkan eitt skref í einu, veðja fyrst mjög litlu</strong></p>
+<ul>
+<li><strong>Við getum notað tölfræði til að finna hagstæð veðmál í íþróttum</strong></li>
+</ul>
+</div><p><br></p><div class="fragment">
+<ul>
+<li><strong>Það er mikil óvissa og best að fara með þessi fræði eins og venjulegar fjárfestingar</strong></li>
+</ul>
+</div><p><br></p><div class="fragment">
+<ul>
+<li><strong>Þróa líkan eitt skref í einu, veðja fyrst mjög litlu</strong></li>
+</ul>
+</div><p><br></p><div class="fragment">
+<ul>
+<li><strong>Greiningar og myndrit geta verið vinsæl afurð</strong></li>
+</ul>
 </div>
 </div>
 

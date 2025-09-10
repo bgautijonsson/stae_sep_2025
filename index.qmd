@@ -563,6 +563,86 @@ bet_amount <- round(kelly * cur_pool, bet_digits)
 ![](images/handball/handball_bets.png){width="100%" fig-align="center" .fragment}
 :::
 
+## 
+
+::: {.columns style="font-size:80%"}
+
+$$
+\begin{gathered}
+\mu_i = \mu_0^t + \text{off}_{i} - \text{def}_{j} \qquad
+\mu_j = \mu_0^t + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+$$
+
+Í stað Poisson dreifingar kemur t-dreifingin
+
+$$
+\begin{pmatrix}
+X_i \\
+X_j
+\end{pmatrix} \sim \text{student-t}\left(\begin{pmatrix}
+\mu_i \\
+\mu_j
+\end{pmatrix}, \Sigma_{ij}, \nu\right)
+$$
+
+Samdreifnifylkið fer eftir keppandi liðum
+
+$$
+\Sigma_{ij} = \begin{pmatrix}
+\sigma_i^2 & \rho \sigma_i \sigma_j \\
+\rho \sigma_i \sigma_j & \sigma_j^2
+\end{pmatrix}
+$$
+
+
+:::
+
+![](images/handball/rho_nu.png){width="100%" fig-align="center"}
+
+## 
+
+::: {.columns style="font-size:80%"}
+
+$$
+\begin{gathered}
+\mu_i = \mu_0^t + \text{off}_{i} - \text{def}_{j} \qquad
+\mu_j = \mu_0^t + \text{off}_{j} - \text{def}_{i}
+\end{gathered}
+$$
+
+Í stað Poisson dreifingar kemur t-dreifingin
+
+$$
+\begin{pmatrix}
+X_i \\
+X_j
+\end{pmatrix} \sim \text{student-t}\left(\begin{pmatrix}
+\mu_i \\
+\mu_j
+\end{pmatrix}, \Sigma_{ij}, \nu\right)
+$$
+
+Samdreifnifylkið fer eftir keppandi liðum
+
+$$
+\Sigma_{ij} = \begin{pmatrix}
+\sigma_i^2 & \rho \sigma_i \sigma_j \\
+\rho \sigma_i \sigma_j & \sigma_j^2
+\end{pmatrix}
+$$
+
+
+:::
+
+![](images/basketball/rho_nu.png){width="100%" fig-align="center"}
+
+##
+
+![](images/arbitrage1.png){width="40%" fig-align="center"}
+
+![](images/arbitrage2.png){width="80%" fig-align="center"}
+
 ##
 
 ::: {.columns}
@@ -581,31 +661,41 @@ bet_amount <- round(kelly * cur_pool, bet_digits)
 ##
 
 ::: {.columns}
-::: {.column width="33%"}
-![](images/basketball/group_table1.png){width="100%" fig-align="center"}
+::: {.column width="50%"}
+![](images/basketball/group_table1.png){width="60%" fig-align="center"}
 :::
-::: {.column width="33%"}
-![](images/basketball/group_table2.png){width="100%" fig-align="center"}
-:::
-::: {.column width="33%"}
-![](images/basketball/group_table3.png){width="100%" fig-align="center"}
+::: {.column width="50%"}
+![](images/basketball/group_table_true.png){width="89%" fig-align="center"}
 :::
 :::
 
+## 
+
+![](images/handball/three_teams.png){width="100%" fig-align="center"}
 
 ## {data-name="Umræður"}
 ::: {.columns style="font-size:80%"}
 
 ::: {.fragment}
-**Við getum notað tölfræði til að finna hagstæð veðmál í íþróttum**
+* **Við getum notað tölfræði til að finna hagstæð veðmál í íþróttum**
 :::
 
-::: {.fragment}
-**Það er mikil óvissa og best að fara með þessi fræði eins og venjulegar fjárfestingar**
-:::
+<br>
 
 ::: {.fragment}
-**Þróa líkan eitt skref í einu, veðja fyrst mjög litlu**
+* **Það er mikil óvissa og best að fara með þessi fræði eins og venjulegar fjárfestingar**
+:::
+
+<br>
+
+::: {.fragment}
+* **Þróa líkan eitt skref í einu, veðja fyrst mjög litlu**
+:::
+
+<br>
+
+::: {.fragment}
+* **Greiningar og myndrit geta verið vinsæl afurð**
 :::
 
 :::
